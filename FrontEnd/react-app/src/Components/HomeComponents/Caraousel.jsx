@@ -1,5 +1,5 @@
 import Carousel from "react-bootstrap/Carousel";
-import ProductCard from "../Screens/ProductSection/ProductScreen";
+import ProductCard from "../../Screens/ProductSection/ProductScreen";
 
 const MultiGridCarousel = ({ products }) => {
   const chunkSize = 4; // Number of products to display per slide

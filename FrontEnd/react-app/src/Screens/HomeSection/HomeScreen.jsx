@@ -7,15 +7,14 @@ import styles from "./HomeScreen.module.css";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import LinkIcon from "@mui/icons-material/Link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import MultiGridCarousel from "../../Components/Caraousel";
-
+import MultiGridCarousel from "../../Components/HomeComponents/Caraousel";
+import ImageScrollAnimation from "../../Components/HomeComponents/ImageComponent";
 function Home() {
   const dispatch = useDispatch();
   const allProducts = useSelector((state) => state.productList);
   const { loading, error, products } = allProducts;
   useEffect(() => {
     dispatch(productListAction());
-    console.log("Hello");
   }, [dispatch]);
   return (
     <>
@@ -35,11 +34,11 @@ function Home() {
               <LinkIcon fontSize="large" />
             </button>
           </div>{" "}
-          <img
-            className={styles.main_Image}
-            src="https://cdn.pixabay.com/photo/2023/05/19/18/07/bee-8005091_1280.jpg"
-            alt="Main Img"
-          ></img>
+          <ImageScrollAnimation
+            imageUrl={
+              "https://cdn.pixabay.com/photo/2023/05/19/18/07/bee-8005091_1280.jpg"
+            }
+          />
           <div className="bag_Section">
             <h3>
               Tote Bag Collection&nbsp;
@@ -56,11 +55,11 @@ function Home() {
             </Row> */}
             <MultiGridCarousel products={products} />
           </div>
-          <img
-            className={styles.main_Image}
-            src="https://cdn.pixabay.com/photo/2023/05/27/12/20/eastern-spinebill-8021395_1280.jpg"
-            alt="Main Img"
-          ></img>
+          <ImageScrollAnimation
+            imageUrl={
+              "https://cdn.pixabay.com/photo/2023/05/27/12/20/eastern-spinebill-8021395_1280.jpg"
+            }
+          />
           <div className="bracelet_Section">
             <h3>
               Bracelet Collection&nbsp;
