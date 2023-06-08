@@ -36,7 +36,7 @@ const products = [
     numReviews: 12,
   },
   {
-    name: "Sony Playstation 4 Pro White Version",
+    name: "Sony Playstation 4 Pro",
     image: "/images/playstation.jpg",
     description:
       "The ultimate home entertainment center starts with PlayStation. Whether you are into gaming, HD movies, television, music",

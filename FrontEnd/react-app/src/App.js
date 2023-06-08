@@ -18,7 +18,7 @@ function App() {
     <Router>
       <Header />
       <main>
-        <Container>
+        <Container style={{ maxWidth: "1450px" }}>
           {/* <Spline scene="https://prod.spline.design/ufgec588jlu77XD9/scene.splinecode" /> */}
           <Routes>
             <Route path="/" element={<Home />} exact />
