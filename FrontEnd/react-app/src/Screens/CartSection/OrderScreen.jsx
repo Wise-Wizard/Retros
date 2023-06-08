@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { PayPalButton } from "react-paypal-button-v2";
 import axios from "axios";
-import { ORDER_PAY_RESET } from "../Constants/orderConstants";
+import { ORDER_PAY_RESET } from "../../Constants/orderConstants";
 import { Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { getOrderDetails, payOrder } from "../Actions/orderAction";
+import { getOrderDetails, payOrder } from "../../Actions/orderAction";
 import { useDispatch, useSelector } from "react-redux";
-import Error from "../Components/Error";
-import Loader from "../Components/Loader";
+import Error from "../../Components/Error";
+import Loader from "../../Components/Loader";
 
 const OrderScreen = ({ match }) => {
   const orderId = match.params.id;

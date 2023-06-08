@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { addToCart, removeFromCart } from "../Actions/cartAction";
+import { addToCart, removeFromCart } from "../../Actions/cartAction";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import {
   Row,

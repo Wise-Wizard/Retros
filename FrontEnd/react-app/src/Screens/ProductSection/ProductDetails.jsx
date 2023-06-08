@@ -9,11 +9,11 @@ import {
 } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 
-import Rating from "../Components/Rating";
+import Rating from "../../Components/Rating";
 import { useDispatch, useSelector } from "react-redux";
-import productDetailsAction from "../Actions/productDetailsAction";
-import Loader from "../Components/Loader";
-import Error from "../Components/Error";
+import productDetailsAction from "../../Actions/productDetailsAction";
+import Loader from "../../Components/Loader";
+import Error from "../../Components/Error";
 
 function ProductPage() {
   const { id } = useParams();

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { savePaymentMethod } from "../Actions/cartAction";
+import { savePaymentMethod } from "../../Actions/cartAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 

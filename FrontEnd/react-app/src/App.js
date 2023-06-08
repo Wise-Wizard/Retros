@@ -1,16 +1,16 @@
 import Footer from "./Components/Footer.jsx";
 import Header from "./Components/Header";
 import { Container } from "react-bootstrap";
-import Home from "./Screens/HomeScreen.jsx";
+import Home from "./Screens/HomeSection/HomeScreen.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ProductPage from "./Screens/ProductDetails";
-import Cart from "./Screens/CartScreen.jsx";
-import LoginScreen from "./Screens/LoginScreen.jsx";
-import RegisterScreen from "./Screens/RegisterScreen.jsx";
-import ProfileScreen from "./Screens/ProfileScreen.jsx";
-import ShippingScreen from "./Screens/ShippingScreen.jsx";
-import Payment from "./Screens/PaymentScreen.jsx";
-import PlaceOrderScreen from "./Screens/PlaceOrderScreen.jsx";
+import ProductPage from "./Screens/ProductSection/ProductDetails";
+import Cart from "./Screens/CartSection/CartScreen.jsx";
+import LoginScreen from "./Screens/ProfileSection/LoginScreen.jsx";
+import RegisterScreen from "./Screens/ProfileSection/RegisterScreen.jsx";
+import ProfileScreen from "./Screens/ProfileSection/ProfileScreen.jsx";
+import ShippingScreen from "./Screens/PaymentSection/ShippingScreen.jsx";
+import Payment from "./Screens/PaymentSection/PaymentScreen.jsx";
+import PlaceOrderScreen from "./Screens/PaymentSection/PlaceOrderScreen.jsx";
 // import Spline from "@splinetool/react-spline";
 
 function App() {

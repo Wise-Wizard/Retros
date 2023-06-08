@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { createOrder } from "../Actions/orderAction";
+import { createOrder } from "../../Actions/orderAction";
 import { useDispatch, useSelector } from "react-redux";
-import Error from "../Components/Error";
+import Error from "../../Components/Error";
 import { useNavigate } from "react-router-dom";
 
 const PlaceOrderScreen = () => {

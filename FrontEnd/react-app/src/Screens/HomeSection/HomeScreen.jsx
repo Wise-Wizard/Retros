@@ -1,13 +1,13 @@
 import { useEffect } from "react";
-import productListAction from "../Actions/productsAction";
+import productListAction from "../../Actions/productsAction";
 import { useDispatch, useSelector } from "react-redux";
-import Loader from "../Components/Loader";
-import Error from "../Components/Error";
+import Loader from "../../Components/Loader";
+import Error from "../../Components/Error";
 import styles from "./HomeScreen.module.css";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import LinkIcon from "@mui/icons-material/Link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import MultiGridCarousel from "../Components/Caraousel";
+import MultiGridCarousel from "../../Components/Caraousel";
 
 function Home() {
   const dispatch = useDispatch();
@@ -58,7 +58,7 @@ function Home() {
           </div>
           <img
             className={styles.main_Image}
-            src="https://cdn.pixabay.com/photo/2023/05/19/18/07/bee-8005091_1280.jpg"
+            src="https://cdn.pixabay.com/photo/2023/05/27/12/20/eastern-spinebill-8021395_1280.jpg"
             alt="Main Img"
           ></img>
           <div className="bracelet_Section">
@@ -66,6 +66,7 @@ function Home() {
               Bracelet Collection&nbsp;
               <ArrowForwardIcon fontSize="large" />
             </h3>
+            <MultiGridCarousel products={products} />
           </div>
         </div>
       )}

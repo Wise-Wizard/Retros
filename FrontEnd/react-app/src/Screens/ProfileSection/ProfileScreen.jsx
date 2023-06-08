@@ -1,35 +1,48 @@
 import React from "react";
-import FormContainer from "../Components/Form";
+import FormContainer from "../../Components/Form";
 import { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Row, Col, Button, Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../Actions/userAction.js";
-import Loader from "../Components/Loader";
-import Error from "../Components/Error";
+import { getUser, updateUser } from "../../Actions/userAction.js";
+import Loader from "../../Components/Loader";
+import Error from "../../Components/Error";
 
-function LoginScreen() {
+function ProfileScreen() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const location = useLocation().search;
   const Navigate = useNavigate();
 
-  const redirect = location ? location.split("=")[1] : "/";
-
   const userLogin = useSelector((state) => state.userLogin);
-  const { loading, error, userInfo } = userLogin;
+  const { userInfo } = userLogin;
+
+  const userDetails = useSelector((state) => state.userProfile);
+
+  const { loading, error, userProfile } = userDetails;
+  const updateUserInfo = useSelector((state) => state.userUpdateProfile);
+  const { success } = updateUserInfo;
+  if (success) {
+    console.log("hello");
+  }
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (userInfo) {
-      Navigate(redirect);
+    if (!userInfo) {
+      Navigate("/login");
+    } else {
+      if (!userProfile) {
+        dispatch(getUser("profile"));
+      } else {
+        setName(userProfile.name);
+        setEmail(userProfile.email);
+      }
     }
-  }, [userInfo, Navigate, redirect]);
+  }, [userInfo, Navigate, userProfile, dispatch]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(loginUser(email, password));
+    dispatch(updateUser({ id: userProfile._id, name, email, password }));
   };
 
   return (
@@ -42,6 +55,18 @@ function LoginScreen() {
         <FormContainer>
           <div className="login">
             <Form onSubmit={submitHandler}>
+              <Form.Group controlId={name}>
+                <Form.FloatingLabel className="label">Name</Form.FloatingLabel>
+                <Form.Control
+                  className="input"
+                  type="text"
+                  placeholder="Enter Name:"
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                ></Form.Control>
+              </Form.Group>
               <Form.Group controlId={email}>
                 <Form.FloatingLabel className="label">
                   Email ID
@@ -75,20 +100,8 @@ function LoginScreen() {
                 <span></span>
                 <span></span>
                 <span></span>
-                <span></span> Login
+                <span></span> Update
               </Button>
-              <Row className="justify-content-md-center">
-                <Col>
-                  <h3>New Customer?</h3>
-                  <Link
-                    to={
-                      redirect ? `/register?redirect=${redirect}` : "/register"
-                    }
-                  >
-                    <h4>Register</h4>
-                  </Link>
-                </Col>
-              </Row>
             </Form>
           </div>
         </FormContainer>
@@ -96,4 +109,4 @@ function LoginScreen() {
     </>
   );
 }
-export default LoginScreen;
+export default ProfileScreen;
