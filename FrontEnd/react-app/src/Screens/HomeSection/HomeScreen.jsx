@@ -9,10 +9,13 @@ import LinkIcon from "@mui/icons-material/Link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import MultiGridCarousel from "../../Components/HomeComponents/Caraousel";
 import ImageScrollAnimation from "../../Components/HomeComponents/ImageComponent";
+import { useNavigate } from "react-router-dom";
+
 function Home() {
   const dispatch = useDispatch();
   const allProducts = useSelector((state) => state.productList);
   const { loading, error, products } = allProducts;
+  const Navigate = useNavigate();
   useEffect(() => {
     dispatch(productListAction());
   }, [dispatch]);
@@ -25,11 +28,17 @@ function Home() {
       ) : (
         <div className="home">
           <div className={styles.button_Navbar}>
-            <button className={styles.nav_Button}>
+            <button
+              className={styles.nav_Button}
+              onClick={() => Navigate("/product/totebags")}
+            >
               Tote Bags &nbsp;
               <ShoppingBagIcon fontSize="large" />
             </button>
-            <button className={styles.nav_Button}>
+            <button
+              className={styles.nav_Button}
+              onClick={() => Navigate("/product/bracelets")}
+            >
               Bracelets &nbsp;
               <LinkIcon fontSize="large" />
             </button>
@@ -40,10 +49,17 @@ function Home() {
             }
           />
           <div className="bag_Section">
-            <h3>
-              Tote Bag Collection&nbsp;
-              <ArrowForwardIcon fontSize="large" />
-            </h3>
+            <h2 style={{ display: "flex", alignItems: "baseline" }}>
+              Tote Bags
+              <h5 style={{ marginLeft: "12px", verticalAlign: "baseline" }}>
+                <a href="/product/totebags">See All Collection</a>
+                <ArrowForwardIcon
+                  fontSize="small"
+                  style={{ marginLeft: "4px", verticalAlign: "baseline" }}
+                />
+              </h5>
+            </h2>
+
             {/* <Row>
               {products.map((product) => {
                 return (
@@ -61,10 +77,16 @@ function Home() {
             }
           />
           <div className="bracelet_Section">
-            <h3>
-              Bracelet Collection&nbsp;
-              <ArrowForwardIcon fontSize="large" />
-            </h3>
+            <h2 style={{ display: "flex", alignItems: "baseline" }}>
+              Bracelets
+              <h5 style={{ marginLeft: "12px", verticalAlign: "baseline" }}>
+              <a href="/product/bracelets">See All Collection</a>
+                <ArrowForwardIcon
+                  fontSize="small"
+                  style={{ marginLeft: "4px", verticalAlign: "baseline" }}
+                />
+              </h5>
+            </h2>
             <MultiGridCarousel products={products} />
           </div>
         </div>

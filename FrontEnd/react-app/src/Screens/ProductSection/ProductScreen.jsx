@@ -15,7 +15,7 @@ function ProductCard(props) {
       >
         <div class={styles.circle}></div>
         <div class={styles.circle}></div>
-        <div class={StyleSheet.card_inner}>
+        <div class={styles.card_inner}>
           <Link to={`/product/${props.productDetails._id}`}>
             <Card.Img src={props.productDetails.image} variant="top"></Card.Img>
 
@@ -24,7 +24,7 @@ function ProductCard(props) {
                 <strong>{props.productDetails.name}</strong>
               </Card.Title>
               <Card.Text as="div">
-                <div>{props.productDetails.price} $</div>
+                <div>{props.productDetails.price} INR</div>
               </Card.Text>
               <Card.Text as="div">
                 <Rating value={props.productDetails.rating}></Rating>

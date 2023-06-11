@@ -24,7 +24,7 @@ function Header() {
         <Navbar bg="dark" variant="dark" expand="lg">
           <Container>
             <LinkContainer to="/">
-              <Navbar.Brand>SwiftMart</Navbar.Brand>
+              <Navbar.Brand>The Retro's</Navbar.Brand>
             </LinkContainer>
 
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
