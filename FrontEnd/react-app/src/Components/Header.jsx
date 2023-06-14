@@ -30,7 +30,7 @@ function Header() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ms-auto">
-                <LinkContainer to="/cart">
+                <LinkContainer to="/favourites">
                   <Nav.Link style={{ paddingLeft: "10px" }}>
                     <FavoriteIcon />
                     &nbsp;Favorites

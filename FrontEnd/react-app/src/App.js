@@ -13,6 +13,7 @@ import Payment from "./Screens/PaymentSection/PaymentScreen.jsx";
 import PlaceOrderScreen from "./Screens/PaymentSection/PlaceOrderScreen.jsx";
 import ToteBagScreen from "./Screens/CategoriesSection/ToteBagScreen.jsx";
 import BraceletScreen from "./Screens/CategoriesSection/BraceletScreen.jsx";
+import FavouritesScreen from "./Screens/HomeSection/FavouritesScreen.jsx";
 // import Spline from "@splinetool/react-spline";
 
 function App() {
@@ -27,9 +28,14 @@ function App() {
             <Route path="/register" element={<RegisterScreen />} exact />
             <Route path="/login" element={<LoginScreen />} exact />
             <Route path="/profile" element={<ProfileScreen />} exact />
+            <Route path="/favourites" element={<FavouritesScreen />} exact />
             <Route path="/product/:id" element={<ProductPage />} exact />
-            <Route path="/product/totebags" element={<ToteBagScreen/>} exact />
-            <Route path="/product/bracelets" element={<BraceletScreen/>} exact />
+            <Route path="/product/totebags" element={<ToteBagScreen />} exact />
+            <Route
+              path="/product/bracelets"
+              element={<BraceletScreen />}
+              exact
+            />
             <Route path="/cart/:id?" element={<Cart />} exact />
             <Route path="/shipping" element={<ShippingScreen />} exact />
             <Route path="/payment" element={<Payment />} exact />
