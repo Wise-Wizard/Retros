@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser, updateUser } from "../../Actions/userAction.js";
-import Loader from "../../Components/Loader";
+import Loader from "../../Components/LoaderComponent/Loader";
 import Error from "../../Components/Error";
 
 function ProfileScreen() {

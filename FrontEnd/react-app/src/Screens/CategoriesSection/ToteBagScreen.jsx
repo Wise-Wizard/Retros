@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Loader from "../../Components/Loader";
+import Loader from "../../Components/LoaderComponent/Loader";
 import Error from "../../Components/Error";
 import { Row, Col } from "react-bootstrap";
 import ProductCard from "../ProductSection/ProductScreen";

@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Row, Col, Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../Actions/userAction.js";
-import Loader from "../../Components/Loader";
+import Loader from "../../Components/LoaderComponent/Loader";
 import Error from "../../Components/Error";
 
 function LoginScreen() {

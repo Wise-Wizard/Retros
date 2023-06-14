@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import productListAction from "../../Actions/productsAction";
 import { useDispatch, useSelector } from "react-redux";
-import Loader from "../../Components/Loader";
+import Loader from "../../Components/LoaderComponent/Loader";
 import Error from "../../Components/Error";
 import styles from "./HomeScreen.module.css";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
@@ -80,7 +80,7 @@ function Home() {
             <h2 style={{ display: "flex", alignItems: "baseline" }}>
               Bracelets
               <h5 style={{ marginLeft: "12px", verticalAlign: "baseline" }}>
-              <a href="/product/bracelets">See All Collection</a>
+                <a href="/product/bracelets">See All Collection</a>
                 <ArrowForwardIcon
                   fontSize="small"
                   style={{ marginLeft: "4px", verticalAlign: "baseline" }}
