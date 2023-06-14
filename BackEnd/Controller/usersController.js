@@ -57,6 +57,19 @@ const getUserProfile = asyncHandler(async (req, res) => {
   }
 });
 
+const getFavourites = asyncHandler(async (req, res) => {
+  const loggedinUser = await User.findById(req.user._id);
+  if (loggedinUser) {
+    res.json({
+      _id: loggedinUser._id,
+      favourites: loggedinUser.favourites,
+    });
+  } else {
+    res.status(404);
+    throw new Error("No Favourites found!");
+  }
+});
+
 const updateUserProfile = asyncHandler(async (req, res) => {
   const currentUser = await User.findById(req.user._id);
   if (currentUser) {
@@ -83,4 +96,5 @@ module.exports = {
   authController,
   getUserProfile,
   updateUserProfile,
+  getFavourites,
 };
