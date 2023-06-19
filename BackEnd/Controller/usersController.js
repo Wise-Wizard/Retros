@@ -57,16 +57,47 @@ const getUserProfile = asyncHandler(async (req, res) => {
   }
 });
 
+//Gets User's Favourites
 const getFavourites = asyncHandler(async (req, res) => {
   const loggedinUser = await User.findById(req.user._id);
   if (loggedinUser) {
     res.json({
       _id: loggedinUser._id,
-      favourites: loggedinUser.favourites,
+      favourites: loggedinUser.favProducts,
     });
   } else {
     res.status(404);
     throw new Error("No Favourites found!");
+  }
+});
+
+//Updates User's Favourites
+const addToFavorites = asyncHandler(async (req, res) => {
+  console.log(req.params.id);
+  const productId = req.params.id;
+  const loggedinUser = await User.findById(req.user._id);
+
+  if (loggedinUser) {
+    // Check if the product is already in the favorites
+    const isProductInFavorites = loggedinUser.favProducts.some(
+      (product) => product.toString() === productId
+    );
+
+    if (isProductInFavorites) {
+      res.status(400);
+      throw new Error("Product already in favorites");
+    }
+
+    // Add the new product to the favorites list
+    loggedinUser.favProducts.push(productId);
+    await loggedinUser.save();
+
+    res.status(201).json({
+      message: "Product added to favorites",
+    });
+  } else {
+    res.status(404);
+    throw new Error("User not found");
   }
 });
 
@@ -97,4 +128,5 @@ module.exports = {
   getUserProfile,
   updateUserProfile,
   getFavourites,
+  addToFavorites,
 };

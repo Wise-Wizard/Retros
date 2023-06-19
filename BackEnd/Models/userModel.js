@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
-const {productSchema} = require("./productModel");
+const { productSchema } = require("./productModel");
 const userSchema = mongoose.Schema(
   {
     name: {
@@ -24,7 +24,7 @@ const userSchema = mongoose.Schema(
       default: false,
     },
 
-    products: [productSchema],
+    favProducts: [String],
   },
   { timestamps: true }
 );
