@@ -6,6 +6,7 @@ const {
   updateUserProfile,
   getFavourites,
   addToFavorites,
+  removeFavorite,
 } = require("../Controller/usersController");
 const { protectHandler } = require("../Middleware/authMiddleware");
 //Router Call
@@ -25,5 +26,8 @@ router
 //Fetches User's Favourites
 router.route("/favourites").get(protectHandler, getFavourites);
 
-router.route("/favourites/:id").post(protectHandler, addToFavorites);
+router
+  .route("/favourites/:id")
+  .post(protectHandler, addToFavorites)
+  .delete(protectHandler, removeFavorite);
 module.exports = router;
