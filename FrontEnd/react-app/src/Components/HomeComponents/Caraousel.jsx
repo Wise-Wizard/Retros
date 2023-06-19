@@ -11,7 +11,7 @@ const MultiGridCarousel = ({ products }) => {
   }
 
   return (
-    <Carousel>
+    <Carousel interval={null}>
       {productChunks.map((chunk, index) => (
         <Carousel.Item key={index}>
           <div className="row" style={{ backgroundColor: "#FEFBF6" }}>

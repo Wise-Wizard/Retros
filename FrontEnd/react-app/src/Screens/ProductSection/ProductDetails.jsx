@@ -14,6 +14,8 @@ import { useDispatch, useSelector } from "react-redux";
 import productDetailsAction from "../../Actions/productDetailsAction";
 import Loader from "../../Components/LoaderComponent/Loader";
 import Error from "../../Components/Error";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { addFavorite } from "../../Actions/favouritesAction";
 
 function ProductPage() {
   const { id } = useParams();
@@ -26,6 +28,10 @@ function ProductPage() {
     dispatch(productDetailsAction(id));
   }, [dispatch, id]);
 
+  const handleAddToFavorites = () => {
+    dispatch(addFavorite(id));
+    console.log("hello");
+  };
   return (
     <div>
       {loading ? (
@@ -91,7 +97,7 @@ function ProductPage() {
                         onChange={(e) => {
                           setQTY(e.target.value);
                         }}
-                        size="lg"
+                        size="sm"
                       >
                         {[...Array(product.countInStock).keys()].map((x) => (
                           <option key={x + 1} value={x + 1}>
@@ -103,6 +109,18 @@ function ProductPage() {
                   </Row>
                 </ListGroupItem>
               )}
+              <ListGroupItem>
+                <div class="text-center">
+                  <span>
+                    <h1>
+                      <button onClick={handleAddToFavorites}>
+                        {" "}
+                        <FavoriteIcon />
+                      </button>
+                    </h1>
+                  </span>
+                </div>
+              </ListGroupItem>
             </ListGroup>
           </Col>
         </Row>
