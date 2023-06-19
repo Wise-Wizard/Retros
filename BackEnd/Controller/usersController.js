@@ -100,7 +100,35 @@ const addToFavorites = asyncHandler(async (req, res) => {
     throw new Error("User not found");
   }
 });
+const removeFavorite = asyncHandler(async (req, res) => {
+  const productId = req.params.id;
+  const loggedinUser = await User.findById(req.user._id);
 
+  if (loggedinUser) {
+    // Check if the product exists in the favorites
+    const productIndex = loggedinUser.favProducts.findIndex(
+      (product) => product.toString() === productId
+    );
+
+    if (productIndex === -1) {
+      res.status(400);
+      throw new Error("Product is not in favorites");
+    }
+
+    // Remove the product from the favorites list
+    loggedinUser.favProducts.splice(productIndex, 1);
+    await loggedinUser.save();
+
+    res.status(200).json({
+      message: "Product removed from favorites",
+    });
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
+});
+
+//Updates User Profile
 const updateUserProfile = asyncHandler(async (req, res) => {
   const currentUser = await User.findById(req.user._id);
   if (currentUser) {
@@ -129,4 +157,5 @@ module.exports = {
   updateUserProfile,
   getFavourites,
   addToFavorites,
+  removeFavorite
 };
