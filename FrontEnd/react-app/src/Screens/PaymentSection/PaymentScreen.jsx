@@ -27,29 +27,29 @@ function Payment() {
       <Form onSubmit={submitHandler}>
         <h1>Payment Method</h1>
 
-        <Form.Label htmlFor="Paypal" className="label">
+        <Form.Label className="label">
           <Form.Check
             type="radio"
-            value="Paypal"
-            id="Paypal"
+            value="RazorPay"
+            id="RazorPay"
             name="Payment"
             onChange={(e) => setPaymentMethod(e.target.value)}
           ></Form.Check>
-          &nbsp; Paypal
+          &nbsp; Razorpay
         </Form.Label>
 
         <Form.Group>
           <Form.Label className="label">
             <Form.Check
               type="radio"
-              value="Credit"
-              id="Credit"
+              value="COD"
+              id="COD"
               name="Payment"
               onChange={(e) => {
                 setPaymentMethod(e.target.value);
               }}
             ></Form.Check>
-            &nbsp; Credit Card
+            &nbsp; Cash On Delivery
           </Form.Label>
         </Form.Group>
         <Button

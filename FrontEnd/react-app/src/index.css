@@ -5,6 +5,8 @@ main {
   min-height: 80vh;
 }
 
+
+
 .card {
   margin-left: 20px;
   width: 190px;
@@ -121,7 +123,7 @@ form {
 }
 
 .label {
-  color: #fff;
+  color: black;
   font-size: 2rem;
   justify-content: left;
   display: flex;

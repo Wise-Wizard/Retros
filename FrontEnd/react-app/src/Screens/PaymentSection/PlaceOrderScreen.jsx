@@ -98,7 +98,7 @@ const PlaceOrderScreen = () => {
           </ListGroup>
         </Col>
         <Col md={4}>
-          <Card>
+          <Card style={{ width: "450px" }}>
             <ListGroup variant="flush">
               <ListGroup.Item>
                 <h2>Order Summary</h2>

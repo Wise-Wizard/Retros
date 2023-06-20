@@ -7,7 +7,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PersonIcon from "@mui/icons-material/Person";
 import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../Actions/userAction.js";
+import { logout } from "../../Actions/userAction.js";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 function Header() {
