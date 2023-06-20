@@ -14,6 +14,7 @@ import {
   ListGroupItem,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 function Cart() {
   const { id } = useParams();
@@ -65,7 +66,7 @@ function Cart() {
                       </Link>
                     </Col>
                     <Col md={2}>
-                      <h5>${item.price}</h5>
+                      <h4>{item.price} INR</h4>
                     </Col>
                     <Col md={2}>
                       <Form.Control
@@ -76,7 +77,7 @@ function Cart() {
                             addToCart(item.product, Number(e.target.value))
                           )
                         }
-                        size="lg"
+                        size="medium"
                       >
                         {[...Array(item.countInStock).keys()].map((x) => (
                           <option key={x + 1} value={x + 1}>
@@ -92,10 +93,10 @@ function Cart() {
                         onClick={() => removeFromCartHandler(item.product)}
                         className="delete"
                       >
-                        <i
-                          className="fa fa-trash text-danger"
-                          aria-hidden="true"
-                        ></i>
+                        <DeleteIcon
+                          fontSize="large"
+                          style={{ color: "#8B0000" }}
+                        />
                       </Button>
                     </Col>
                   </Row>
@@ -106,29 +107,30 @@ function Cart() {
         </Col>
 
         <Col md={4}>
-          <Card>
+          <Card style={{ width: "450px" }}>
             <ListGroup variant="flush">
               <ListGroupItem>
-                <h2>
-                  Total Amount: $
+                <h3>
+                  Total Amount: INR
                   {cartItems
                     .reduce((acc, item) => acc + item.qty * item.price, 0)
                     .toFixed(2)}
-                </h2>
+                </h3>
                 <h2>
                   ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
                   Products
                 </h2>
               </ListGroupItem>
-              <div class="text-center">
-                <Button
-                  type="button"
+              <div class="text-center" style={{ padding: "15px" }}>
+                <button
                   className="batman"
                   disabled={cartItems.length === 0}
                   onClick={checkout}
                 >
-                  <span>Checkout</span>
-                </Button>
+                  <h3>
+                    <span>Checkout</span>
+                  </h3>
+                </button>
               </div>
             </ListGroup>
           </Card>
