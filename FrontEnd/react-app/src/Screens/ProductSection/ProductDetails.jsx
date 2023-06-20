@@ -15,23 +15,45 @@ import productDetailsAction from "../../Actions/productDetailsAction";
 import Loader from "../../Components/LoaderComponent/Loader";
 import Error from "../../Components/Error";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { addFavorite } from "../../Actions/favouritesAction";
+import {
+  addFavorite,
+  deleteFavourite,
+  getFavourites,
+} from "../../Actions/favouritesAction";
 
 function ProductPage() {
   const { id } = useParams();
   const [QTY, setQTY] = useState(1);
+  const [isFav, setIsFav] = useState(null);
   const dispatch = useDispatch();
   const singleProduct = useSelector((state) => state.productDetails);
   const { loading, error, product } = singleProduct;
 
+  const favProducts = useSelector((state) => state.userFavourites);
+  const { userFav } = favProducts;
+
   useEffect(() => {
     dispatch(productDetailsAction(id));
+    dispatch(getFavourites());
   }, [dispatch, id]);
 
-  const handleAddToFavorites = () => {
-    dispatch(addFavorite(id));
-    console.log("hello");
+  useEffect(() => {
+    console.log(userFav);
+    if (userFav && userFav.favourites.includes(id)) {
+      setIsFav(true);
+    } else {
+      setIsFav(false);
+    }
+  }, [userFav, id]);
+
+  const handleFavorites = () => {
+    if (isFav) {
+      dispatch(deleteFavourite(id));
+    } else {
+      dispatch(addFavorite(id));
+    }
   };
+
   return (
     <div>
       {loading ? (
@@ -81,6 +103,17 @@ function ProductPage() {
                       </span>
                     </button>
                   </Link>
+                  <FavoriteIcon
+                    fontSize="large"
+                    style={{
+                      color: isFav ? "#ff1493" : "rgba(0, 0, 0, 0.2)",
+                      opacity: isFav ? 1 : 0.5,
+                      textShadow: isFav
+                        ? "0 0 10px #ff1493, 0 0 20px #ff1493"
+                        : "none",
+                    }}
+                    onClick={handleFavorites}
+                  />
                 </div>
               </ListGroupItem>
               {product.countInStock > 0 && (
@@ -109,18 +142,6 @@ function ProductPage() {
                   </Row>
                 </ListGroupItem>
               )}
-              <ListGroupItem>
-                <div class="text-center">
-                  <span>
-                    <h1>
-                      <button onClick={handleAddToFavorites}>
-                        {" "}
-                        <FavoriteIcon />
-                      </button>
-                    </h1>
-                  </span>
-                </div>
-              </ListGroupItem>
             </ListGroup>
           </Col>
         </Row>

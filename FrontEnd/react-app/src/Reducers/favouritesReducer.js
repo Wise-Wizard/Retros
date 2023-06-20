@@ -5,6 +5,9 @@ import {
   USER_ADD_FAVORITE_REQUEST,
   USER_ADD_FAVORITE_SUCCESS,
   USER_ADD_FAVORITE_FAILURE,
+  USER_DELETE_FAVORITE_REQUEST,
+  USER_DELETE_FAVORITE_SUCCESS,
+  USER_DELETE_FAVORITE_FAILURE,
 } from "../Constants/favouritesConstants";
 
 export const userFavouritesReducer = (state = { favourites: [] }, action) => {
@@ -21,10 +24,19 @@ export const userFavouritesReducer = (state = { favourites: [] }, action) => {
       return {
         ...state,
         loading: false,
-        success: true,
         userFav: action.payload,
       };
     case USER_ADD_FAVORITE_FAILURE:
+      return { ...state, loading: false, error: action.payload };
+    case USER_DELETE_FAVORITE_REQUEST:
+      return { ...state, loading: true };
+    case USER_DELETE_FAVORITE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        userFav: action.payload,
+      };
+    case USER_DELETE_FAVORITE_FAILURE:
       return { ...state, loading: false, error: action.payload };
     default:
       return state;
