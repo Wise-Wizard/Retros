@@ -21,9 +21,6 @@ function FavouritesScreen() {
     dispatch(productListAction());
   }, [dispatch]);
 
-  console.log(userFav);
-  console.log(products);
-
   if (loading) {
     return <Loader />; // Display Loader while loading
   }
@@ -42,7 +39,10 @@ function FavouritesScreen() {
     return (
       <>
         <h1>You have no favourites!</h1>
-        <Link to="/"><h2>Go Back</h2></Link> {/* Add a link to go back */}
+        <Link to="/">
+          <h2>Go Back</h2>
+        </Link>{" "}
+        {/* Add a link to go back */}
       </>
     );
   }
