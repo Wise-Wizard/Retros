@@ -17,6 +17,9 @@ import {
   orderListMyReducer,
 } from "./Reducers/orderReducer";
 import { userFavouritesReducer } from "./Reducers/favouritesReducer";
+import { adminGetUsersReducer } from "./Reducers/adminReducer";
+import { apiSlice } from "./Slices/apiSlice";
+import authReducer from "./Slices/authSlice";
 
 const cartItemsFromStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
@@ -44,6 +47,9 @@ const reducer = combineReducers({
   orderDetails: orderDetailsReducer,
   orderPay: orderPayReducer,
   orderListMy: orderListMyReducer,
+  [apiSlice.reducerPath]: apiSlice.reducer,
+  auth: authReducer,
+  adminGetUsers: adminGetUsersReducer,
 });
 
 const initialState = {
@@ -54,7 +60,7 @@ const initialState = {
   userLogin: { userInfo: userInfoFromStorage },
   userFavourites: userFavouritesFromStorage,
 };
-const middleWare = [thunk];
+const middleWare = [thunk].concat(apiSlice.middleware);
 const store = createStore(
   reducer,
   initialState,
