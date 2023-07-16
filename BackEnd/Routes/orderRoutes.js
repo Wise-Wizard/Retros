@@ -13,7 +13,7 @@ const router = express.Router();
 router
   .route("/")
   .post(protectHandler, addOrderItem)
-  .get(protectHandler, admin, getOrders);
+  .get(getOrders);
 //Get order by ID
 router.route("/:id").get(protectHandler, getOrderById);
 //router.route("/:id/pay").put(protectHandler, updateOrderToPaid);

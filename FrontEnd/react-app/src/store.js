@@ -17,7 +17,10 @@ import {
   orderListMyReducer,
 } from "./Reducers/orderReducer";
 import { userFavouritesReducer } from "./Reducers/favouritesReducer";
-import { adminGetUsersReducer } from "./Reducers/adminReducer";
+import {
+  adminGetOrdersReducer,
+  adminGetUsersReducer,
+} from "./Reducers/adminReducer";
 import { apiSlice } from "./Slices/apiSlice";
 import authReducer from "./Slices/authSlice";
 
@@ -50,6 +53,7 @@ const reducer = combineReducers({
   [apiSlice.reducerPath]: apiSlice.reducer,
   auth: authReducer,
   adminGetUsers: adminGetUsersReducer,
+  adminGetOrders: adminGetOrdersReducer,
 });
 
 const initialState = {
