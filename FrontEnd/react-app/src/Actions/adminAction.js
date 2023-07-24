@@ -8,6 +8,9 @@ import {
   ADMIN_ORDERS_REQUEST,
   ADMIN_ORDERS_SUCCESS,
   ADMIN_ORDERS_FAILURE,
+  ADMIN_PRODUCTS_REQUEST,
+  ADMIN_PRODUCTS_SUCCESS,
+  ADMIN_PRODUCTS_FAILURE,
 } from "../Constants/adminConstants";
 import axios from "axios";
 
@@ -74,3 +77,5 @@ export const getOrdersList = () => async (dispatch, getState) => {
     dispatch({ type: ADMIN_ORDERS_FAILURE, payload: error.message });
   }
 };
+
+//Admin Products Actions

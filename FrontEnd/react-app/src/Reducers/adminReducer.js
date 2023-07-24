@@ -8,6 +8,8 @@ import {
   ADMIN_ORDERS_REQUEST,
   ADMIN_ORDERS_SUCCESS,
   ADMIN_ORDERS_FAILURE,
+  ADMIN_PRODUCT_DELETE_REQUEST,
+  ADMIN_PRODUCT_DELETE_SUCCESS,
 } from "../Constants/adminConstants";
 
 export const adminGetUsersReducer = (state = {}, action) => {
