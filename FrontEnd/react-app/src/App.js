@@ -20,6 +20,7 @@ import ProductEditScreen from "./Screens/AdminSection/ProductEditScreen.jsx";
 import UserListScreen from "./Screens/AdminSection/UserListScreen.jsx";
 import UserEditScreen from "./Screens/AdminSection/UserEditScreen.jsx";
 import AdminRoute from "./Components/ConstComponents/AdminRoutes.jsx"
+import CreateProductScreen from "./Screens/AdminSection/CreateProductScreen.jsx";
 // import Spline from "@splinetool/react-spline";
 
 function App() {
@@ -61,6 +62,10 @@ function App() {
               <Route
                 path="/admin/product/:id/edit"
                 element={<ProductEditScreen />}
+              />
+              <Route
+                path="/admin/product/create"
+                element={<CreateProductScreen />}
               />
               <Route path="/admin/user/:id/edit" element={<UserEditScreen />} />
             </Route>

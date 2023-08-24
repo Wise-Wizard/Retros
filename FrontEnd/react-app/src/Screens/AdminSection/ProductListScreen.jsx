@@ -1,16 +1,12 @@
 import { LinkContainer } from "react-router-bootstrap";
 import { Table, Button, Row, Col } from "react-bootstrap";
 import { FaEdit, FaPlus, FaTrash } from "react-icons/fa";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Error from "../../Components/Error";
 import Loader from "../../Components/LoaderComponent/Loader";
 import Paginate from "../../Components/HomeComponents/Paginate";
 import { toast } from "react-toastify";
-import {
-  useGetProductsQuery,
-  useDeleteProductMutation,
-  useCreateProductMutation,
-} from "../../Slices/productsApiSlice";
+import { useCreateProductMutation } from "../../Slices/productsApiSlice";
 import productListAction, { deleteProduct } from "../../Actions/productsAction";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,6 +16,7 @@ const ProductListScreen = () => {
   const allProducts = useSelector((state) => state.productList);
   const { loading, error, products } = allProducts;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     console.log("Dispatched");
     dispatch(productListAction());
@@ -28,7 +25,7 @@ const ProductListScreen = () => {
   const deleteHandler = async (id) => {
     if (window.confirm("Are you sure")) {
       try {
-        console.log("dispatched")
+        console.log("dispatched");
         dispatch(deleteProduct(id));
       } catch (err) {
         toast.error(err?.data?.message || err.error);
@@ -36,16 +33,10 @@ const ProductListScreen = () => {
     }
   };
 
-  const [createProduct] = ``;
   useCreateProductMutation();
-
   const createProductHandler = async () => {
     if (window.confirm("Are you sure you want to create a new product?")) {
-      try {
-        await createProduct();
-      } catch (err) {
-        toast.error(err?.data?.message || err.error);
-      }
+      navigate("/admin/product/create");
     }
   };
   if (loading) {
