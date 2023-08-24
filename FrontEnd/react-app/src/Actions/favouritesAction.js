@@ -69,7 +69,6 @@ export const addFavorite = (id) => async (dispatch, getState) => {
 export const deleteFavourite = (id) => async (dispatch, getState) => {
   try {
     dispatch({ type: USER_DELETE_FAVORITE_REQUEST });
-    console.log("not");
     const {
       userLogin: { userInfo },
     } = getState();

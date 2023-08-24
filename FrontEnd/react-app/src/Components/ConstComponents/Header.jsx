@@ -23,11 +23,11 @@ function Header() {
       <header>
         <Navbar bg="dark" variant="dark" expand="lg">
           <Container>
+            <LinkContainer to="/">
+              <Navbar.Brand className="text-center">The Retro's</Navbar.Brand>
+            </LinkContainer>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-              <LinkContainer to="/">
-                <Navbar.Brand className="text-center">The Retro's</Navbar.Brand>
-              </LinkContainer>
               <Nav className="ms-auto">
                 {userInfo ? (
                   <LinkContainer to="/favourites">

@@ -14,6 +14,13 @@ import PlaceOrderScreen from "./Screens/PaymentSection/PlaceOrderScreen.jsx";
 import ToteBagScreen from "./Screens/CategoriesSection/ToteBagScreen.jsx";
 import BraceletScreen from "./Screens/CategoriesSection/BraceletScreen.jsx";
 import FavouritesScreen from "./Screens/HomeSection/FavouritesScreen.jsx";
+import OrderListScreen from "./Screens/AdminSection/OrderListScreen.jsx";
+import ProductListScreen from "./Screens/AdminSection/ProductListScreen.jsx";
+import ProductEditScreen from "./Screens/AdminSection/ProductEditScreen.jsx";
+import UserListScreen from "./Screens/AdminSection/UserListScreen.jsx";
+import UserEditScreen from "./Screens/AdminSection/UserEditScreen.jsx";
+import AdminRoute from "./Components/ConstComponents/AdminRoutes.jsx"
+import CreateProductScreen from "./Screens/AdminSection/CreateProductScreen.jsx";
 // import Spline from "@splinetool/react-spline";
 
 function App() {
@@ -40,6 +47,28 @@ function App() {
             <Route path="/shipping" element={<ShippingScreen />} exact />
             <Route path="/payment" element={<Payment />} exact />
             <Route path="/placeorder" element={<PlaceOrderScreen />} exact />
+            {/* Admin users */}
+            <Route path="" element={<AdminRoute />}>
+              <Route path="/admin/orderlist" element={<OrderListScreen/>} />
+              <Route
+                path="/admin/productlist"
+                element={<ProductListScreen />}
+              />
+              <Route
+                path="/admin/productlist/:pageNumber"
+                element={<ProductListScreen />}
+              />
+              <Route path="/admin/userlist" element={<UserListScreen />} />
+              <Route
+                path="/admin/product/:id/edit"
+                element={<ProductEditScreen />}
+              />
+              <Route
+                path="/admin/product/create"
+                element={<CreateProductScreen />}
+              />
+              <Route path="/admin/user/:id/edit" element={<UserEditScreen />} />
+            </Route>
           </Routes>
         </Container>
       </main>
