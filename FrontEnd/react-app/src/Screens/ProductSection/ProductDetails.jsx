@@ -80,7 +80,7 @@ function ProductPage() {
             </ListGroup>
           </Col>
 
-          <Col md={3} style={{marginTop: "20px"}}>
+          <Col md={3} style={{ marginTop: "20px" }}>
             <ListGroup>
               <ListGroupItem>
                 <Row>
@@ -105,12 +105,10 @@ function ProductPage() {
                   </Link>
                   <FavoriteIcon
                     fontSize="large"
+                    className={isFav ? "beatingHeart" : ""}
                     style={{
                       color: isFav ? "#ff1493" : "rgba(0, 0, 0, 0.2)",
-                      opacity: isFav ? 1 : 0.5,
-                      textShadow: isFav
-                        ? "0 0 10px #ff1493, 0 0 20px #ff1493"
-                        : "none",
+                      animation: isFav ? "heartBeat 1.2s infinite" : "none",
                     }}
                     onClick={handleFavorites}
                   />
