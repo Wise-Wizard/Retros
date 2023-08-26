@@ -18,14 +18,12 @@ const ProductListScreen = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
-    console.log("Dispatched");
     dispatch(productListAction());
   }, [dispatch]);
 
   const deleteHandler = async (id) => {
     if (window.confirm("Are you sure")) {
       try {
-        console.log("dispatched");
         dispatch(deleteProduct(id));
       } catch (err) {
         toast.error(err?.data?.message || err.error);

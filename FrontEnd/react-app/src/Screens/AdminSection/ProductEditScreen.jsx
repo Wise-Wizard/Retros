@@ -6,12 +6,11 @@ import Loader from "../../Components/LoaderComponent/Loader";
 import FormContainer from "../../Components/Form";
 import { toast } from "react-toastify";
 import {
-  useGetProductDetailsQuery,
-  useUpdateProductMutation,
   useUploadProductImageMutation,
 } from "../../Slices/productsApiSlice";
 import { updateProduct } from "../../Actions/productsAction";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import productDetailsAction from "../../Actions/productDetailsAction";
 
 const ProductEditScreen = () => {
   const { id: productId } = useParams();
@@ -23,14 +22,12 @@ const ProductEditScreen = () => {
   const [category, setCategory] = useState("");
   const [countInStock, setCountInStock] = useState(0);
   const [description, setDescription] = useState("");
-
-  const {
-    data: product,
-    isLoading,
-    refetch,
-    error,
-  } = useGetProductDetailsQuery(productId);
-
+  const singleProduct = useSelector((state) => state.productDetails);
+  const { loading, error, product } = singleProduct;
+  useEffect(() => {
+    dispatch(productDetailsAction(productId));
+  }, [dispatch, productId]);
+  
   const [uploadProductImage, { isLoading: loadingUpload }] =
     useUploadProductImageMutation();
 
@@ -50,8 +47,7 @@ const ProductEditScreen = () => {
           countInStock,
         })
       );
-      toast.success("Product updated");
-      refetch();
+      window.alert("Product updated");
       navigate("/admin/productlist");
     } catch (err) {
       toast.error(err?.response?.data?.message || err.message);
@@ -88,7 +84,7 @@ const ProductEditScreen = () => {
       </Link>
       <FormContainer>
         <h1>Edit Product</h1>
-        {isLoading ? (
+        {loading ? (
           <Loader />
         ) : error ? (
           <Message variant="danger">{error}</Message>

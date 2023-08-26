@@ -22,8 +22,14 @@ const productSchema = mongoose.Schema(
     },
 
     image: {
-      type: String,
-      required: true,
+      public_id: {
+        type: String,
+        required: false,
+      },
+      url: {
+        type: String,
+        required: false,
+      },
     },
 
     description: {
@@ -53,12 +59,12 @@ const productSchema = mongoose.Schema(
 
     rating: {
       type: Number,
-      required: true,
+      required: false,
     },
 
     numReviews: {
       type: Number,
-      reqired: true,
+      reqired: false,
     },
 
     reviews: [reviewModel],
