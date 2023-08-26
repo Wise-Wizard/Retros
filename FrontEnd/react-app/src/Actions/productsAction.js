@@ -5,6 +5,10 @@ import {
   ADMIN_PRODUCT_DELETE_FAILURE,
   ADMIN_PRODUCT_UPDATE_FAILURE,
   ADMIN_PRODUCT_UPDATE_REQUEST,
+  ADMIN_PRODUCT_CREATE_FAILURE,
+  ADMIN_PRODUCT_CREATE_REQUEST,
+  ADMIN_ORDERS_SUCCESS,
+  ADMIN_PRODUCT_CREATE_SUCCESS,
 } from "../Constants/adminConstants";
 const productListAction = () => async (dispatch) => {
   try {
@@ -14,6 +18,29 @@ const productListAction = () => async (dispatch) => {
   } catch (error) {
     console.log(error);
     dispatch({ type: "PRODUCT_LIST_FAILURE", payload: error.message });
+  }
+};
+//Admin Product Create
+export const createProduct = (newProductData) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: ADMIN_PRODUCT_CREATE_REQUEST });
+    const {
+      userLogin: { userInfo },
+    } = getState();
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    const { data } = await axios.post(
+      "http://localhost:8080/api/products",
+      newProductData,
+      config
+    );
+    dispatch({ type: ADMIN_PRODUCT_CREATE_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: ADMIN_PRODUCT_CREATE_FAILURE, payload: error.message });
   }
 };
 

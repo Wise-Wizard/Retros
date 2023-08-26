@@ -17,7 +17,7 @@ function ProductCard(props) {
         <div class={styles.circle}></div>
         <div class={styles.card_inner}>
           <Link to={`/product/${props.productDetails._id}`}>
-            <Card.Img src={props.productDetails.image} variant="top"></Card.Img>
+            <Card.Img src={props.productDetails.image["url"]} variant="top"></Card.Img>
 
             <Card.Body>
               <Card.Title as="div" className={styles.card_title}>

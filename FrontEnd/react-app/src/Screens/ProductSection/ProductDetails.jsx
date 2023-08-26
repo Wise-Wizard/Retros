@@ -28,7 +28,6 @@ function ProductPage() {
   const dispatch = useDispatch();
   const singleProduct = useSelector((state) => state.productDetails);
   const { loading, error, product } = singleProduct;
-
   const favProducts = useSelector((state) => state.userFavourites);
   const { userFav } = favProducts;
 
@@ -38,7 +37,6 @@ function ProductPage() {
   }, [dispatch, id]);
 
   useEffect(() => {
-    console.log(userFav);
     if (userFav && userFav.favourites.includes(id)) {
       setIsFav(true);
     } else {
@@ -63,7 +61,9 @@ function ProductPage() {
       ) : (
         <Row>
           <Col md={6}>
-            <Image src={product.image} alt={product.image} fluid></Image>
+            {product.image && (
+              <Image src={product.image.url} alt={product.name} fluid />
+            )}
           </Col>
           <Col md={3}>
             <ListGroup>

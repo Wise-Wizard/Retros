@@ -21,13 +21,13 @@ function ToteBagScreen() {
         <Error variant="danger" children={error} />
       ) : (
         <Row>
-          {products.map((product) => {
-            return (
+          {products
+            .filter((product) => product.category === "Tote Bag")
+            .map((product) => (
               <Col key={product._id} md={3}>
                 <ProductCard productDetails={product} />
               </Col>
-            );
-          })}
+            ))}
         </Row>
       )}
     </>

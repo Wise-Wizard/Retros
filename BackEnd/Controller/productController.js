@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const { Product } = require("../Models/productModel");
-
+const cloudinary = require("../Utility/cloudinary");
 //Gets all products in Database
 const getProducts = asyncHandler(async (req, res) => {
   const products = await Product.find({});
@@ -12,6 +12,7 @@ const getProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
   if (product) {
     res.json(product);
+    console.log(product.image)
   } else {
     res.status(404).json({ message: "Product Not Found!" });
   }
@@ -21,20 +22,30 @@ const getProduct = asyncHandler(async (req, res) => {
 // @route   POST /api/products
 // @access  Private/Admin
 const createProduct = asyncHandler(async (req, res) => {
-  const product = new Product({
-    name: "Sample name",
-    price: 0,
-    user: req.user._id,
-    image: "/images/sample.jpg",
-    brand: "Sample brand",
-    category: "Sample category",
-    countInStock: 0,
-    numReviews: 0,
-    description: "Sample description",
-  });
+  const { name, price, description, image, brand, category, countInStock } =
+    req.body;
+  try {
+    result = await cloudinary.uploader.upload(image, {
+      folder: "Retros",
+    });
+    const product = await new Product({
+      name: name,
+      price: price,
+      user: req.user._id,
+      image: { public_id: result.public_id, url: result.secure_url },
+      brand: brand,
+      category: category,
+      countInStock: countInStock,
+      description: description,
+    });
 
-  const createdProduct = await product.save();
-  res.status(201).json(createdProduct);
+    const createdProduct = await product.save();
+    console.log("Done");
+    res.status(201).json(createdProduct);
+  } catch (uploadError) {
+    console.log(uploadError);
+    res.status(500).json({ message: "Invalid Product Data" });
+  }
 });
 
 // @desc    Update a product
