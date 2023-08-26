@@ -27,6 +27,7 @@ function Home() {
         <Error variant="danger" children={error} />
       ) : (
         <div className="home">
+        <h1 className="welcome-heading">Discover Retros</h1>
           <div className={styles.button_Navbar}>
             <button
               className={styles.nav_Button}
@@ -60,16 +61,11 @@ function Home() {
               </h5>
             </h2>
 
-            {/* <Row>
-              {products.map((product) => {
-                return (
-                  <Col key={product._id} md={3}>
-                    <ProductCard productDetails={product} />
-                  </Col>
-                );
-              })}
-            </Row> */}
-            <MultiGridCarousel products={products} />
+            <MultiGridCarousel
+              products={products.filter(
+                (product) => product.category === "Tote Bag"
+              )}
+            />
           </div>
           <ImageScrollAnimation
             imageUrl={
@@ -87,7 +83,11 @@ function Home() {
                 />
               </h5>
             </h2>
-            <MultiGridCarousel products={products} />
+            <MultiGridCarousel
+              products={products.filter(
+                (product) => product.category === "Bracelet"
+              )}
+            />
           </div>
         </div>
       )}

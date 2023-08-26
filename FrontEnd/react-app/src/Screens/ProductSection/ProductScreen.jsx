@@ -24,11 +24,11 @@ function ProductCard(props) {
                 <strong>{props.productDetails.name}</strong>
               </Card.Title>
               <Card.Text as="div">
-                <div>{props.productDetails.price} INR</div>
+                <div><h4>{props.productDetails.price} INR</h4></div>
               </Card.Text>
-              <Card.Text as="div">
+              {/* <Card.Text as="div">
                 <Rating value={props.productDetails.rating}></Rating>
-              </Card.Text>
+              </Card.Text> */}
             </Card.Body>
           </Link>
         </div>

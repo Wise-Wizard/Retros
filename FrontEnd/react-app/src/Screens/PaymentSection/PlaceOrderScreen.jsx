@@ -56,10 +56,15 @@ const PlaceOrderScreen = () => {
             <ListGroup.Item>
               <h2>Shipping</h2>
               <p>
-                <strong>Address :</strong>
-                {cart.shippingAddress.address}&nbsp;
-                {cart.shippingAddress.city}&nbsp;
-                {cart.shippingAddress.postalcode}&nbsp;
+                <strong>
+                  Phone Number: {cart.shippingAddress.phone}&nbsp;
+                </strong>
+              </p>
+              <p>
+                <strong>Address: </strong>
+                {cart.shippingAddress.address},&nbsp;
+                {cart.shippingAddress.city},&nbsp;
+                {cart.shippingAddress.postalcode},&nbsp;
                 {cart.shippingAddress.country}&nbsp;
               </p>
             </ListGroup.Item>
@@ -79,7 +84,7 @@ const PlaceOrderScreen = () => {
                     <ListGroup.Item key={index}>
                       <Row>
                         <Col md={1}>
-                          <Image src={item.image} alt={item.name} fluid />
+                          <Image src={item.image.url} alt={item.name} fluid />
                         </Col>
                         <Col>
                           <Link to={`/product/${item.product}`}>
@@ -87,7 +92,7 @@ const PlaceOrderScreen = () => {
                           </Link>
                         </Col>
                         <Col md={4}>
-                          {item.qty} X ${item.price} = ${item.price}
+                          {item.qty} X INR {item.price} = INR {item.price}
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -106,19 +111,19 @@ const PlaceOrderScreen = () => {
               <ListGroup.Item>
                 <Row>
                   <Col>Items</Col>
-                  <Col>${cart.itemsPrice}</Col>
+                  <Col>INR {cart.itemsPrice}</Col>
                 </Row>
                 <Row>
                   <Col>Shipping</Col>
-                  <Col>${cart.shippingPrice}</Col>
+                  <Col>INR {cart.shippingPrice}</Col>
                 </Row>
                 <Row>
                   <Col>Tax</Col>
-                  <Col>${cart.taxPrice}</Col>
+                  <Col>INR {cart.taxPrice}</Col>
                 </Row>
                 <Row>
                   <Col>Total</Col>
-                  <Col>${cart.totalPrice}</Col>
+                  <Col>INR {cart.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>

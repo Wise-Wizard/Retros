@@ -5,7 +5,27 @@ main {
   min-height: 80vh;
 }
 
+/* Add this CSS in your project's stylesheet */
+.welcome-heading {
+  text-align: center;
+  font-size: 60px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  color: #000;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Add a subtle shadow */
+  animation: fadeInUp 1.5s ease-in-out;
+}
 
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 .card {
   margin-left: 20px;
@@ -163,7 +183,7 @@ form .loginButton {
 }
 
 form .loginButton:hover {
-  box-shadow: 0 0 10px #3586ff, 0 0 25px #7F5283, 0 0 50px #3586ff;
+  box-shadow: 0 0 10px #3586ff, 0 0 25px #7f5283, 0 0 50px #3586ff;
   transition-delay: 0.6s;
 }
 
@@ -189,7 +209,7 @@ form .loginButton span:nth-child(3) {
   right: -100%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #7F5283);
+  background: linear-gradient(90deg, transparent, #7f5283);
 }
 
 form .loginButton:hover span:nth-child(3) {
@@ -217,7 +237,7 @@ form .loginButton span:nth-child(4) {
   left: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(360deg, transparent, #7F5283);
+  background: linear-gradient(360deg, transparent, #7f5283);
 }
 
 form .loginButton:hover span:nth-child(4) {
@@ -228,9 +248,9 @@ form .loginButton:hover span:nth-child(4) {
 
 form .loginButton:active {
   background: #ae00af;
-  background: linear-gradient(to top right, #ae00af, #7F5283);
+  background: linear-gradient(to top right, #ae00af, #7f5283);
   color: #bfbfbf;
-  box-shadow: 0 0 8px #3586ff, 0 0 8px #7F5283, 0 0 8px #3586ff;
+  box-shadow: 0 0 8px #3586ff, 0 0 8px #7f5283, 0 0 8px #3586ff;
   transition: 0.1s;
 }
 
@@ -246,5 +266,3 @@ form
 
 /*Form Button*/
 /* Form-Component CSS */
-
-
