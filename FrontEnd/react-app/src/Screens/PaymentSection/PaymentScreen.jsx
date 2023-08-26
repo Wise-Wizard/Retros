@@ -1,12 +1,11 @@
-import React from "react";
-import { useState } from "react";
-import { Form, Button } from "react-bootstrap";
-import { savePaymentMethod } from "../../Actions/cartAction";
+import React, { useState } from "react";
+import { Form, Button, Alert } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { savePaymentMethod } from "../../Actions/cartAction";
 
 function Payment() {
-  const [paymentMethod, setPaymentMethod] = useState();
+  const [paymentMethod, setPaymentMethod] = useState("COD");
   const dispatch = useDispatch();
   const Navigate = useNavigate();
 
@@ -24,20 +23,50 @@ function Payment() {
 
   return (
     <>
-      <Form onSubmit={submitHandler}>
-        <h1>Payment Method</h1>
-
-        <Form.Label className="label">
-          <Form.Check
-            type="radio"
-            value="RazorPay"
-            id="RazorPay"
-            name="Payment"
-            onChange={(e) => setPaymentMethod(e.target.value)}
-          ></Form.Check>
-          &nbsp; Razorpay
-        </Form.Label>
-
+      <h1>Payment Method</h1>
+      <Alert
+        variant="info"
+        className="payment-message"
+        style={{ width: "800px" }}
+      >
+        <h5>Payment Update:</h5>
+        <p>
+          <strong>
+            {" "}
+            Currently, we do not have a payment gateway integrated on our
+            website. However, we have streamlined the process to ensure a smooth
+            checkout experience for you. Here's what you need to know:
+          </strong>
+        </p>
+        <ul>
+          <li>
+            <strong>Confirmation Process:</strong> To place your order, simply
+            click on the "Continue" button below. You will be directed to the
+            orders page, where you can click on the "Place Order" button to
+            confirm your address and finalize your order.
+          </li>
+          <li>
+            <strong>Personal Assistance:</strong> Our dedicated team will
+            personally reach out to you within 2-3 working days to finalize the
+            payment process.
+          </li>
+          <li>
+            <strong>Order Tracking:</strong> Once your order is shipped, you
+            will have access to real-time updates on its status through your
+            profile screen.
+          </li>
+        </ul>
+        <h5>Apologies for the inconvenience:</h5>
+        <p>
+          <strong>
+            {" "}
+            We apologize for any inconvenience caused and appreciate your
+            patience as we work towards integrating a seamless payment gateway
+            for future orders.
+          </strong>
+        </p>
+      </Alert>
+      <Form onSubmit={submitHandler} className="payment-form">
         <Form.Group>
           <Form.Label className="label">
             <Form.Check
@@ -45,9 +74,11 @@ function Payment() {
               value="COD"
               id="COD"
               name="Payment"
+              defaultChecked
               onChange={(e) => {
                 setPaymentMethod(e.target.value);
               }}
+              disabled={true}
             ></Form.Check>
             &nbsp; Cash On Delivery
           </Form.Label>
@@ -66,4 +97,5 @@ function Payment() {
     </>
   );
 }
+
 export default Payment;

@@ -19,7 +19,8 @@ import ProductListScreen from "./Screens/AdminSection/ProductListScreen.jsx";
 import ProductEditScreen from "./Screens/AdminSection/ProductEditScreen.jsx";
 import UserListScreen from "./Screens/AdminSection/UserListScreen.jsx";
 import UserEditScreen from "./Screens/AdminSection/UserEditScreen.jsx";
-import AdminRoute from "./Components/ConstComponents/AdminRoutes.jsx"
+import AdminRoute from "./Components/ConstComponents/AdminRoutes.jsx";
+import OrderScreen from "./Screens/PaymentSection/OrderScreen.jsx";
 import CreateProductScreen from "./Screens/AdminSection/CreateProductScreen.jsx";
 // import Spline from "@splinetool/react-spline";
 
@@ -47,9 +48,10 @@ function App() {
             <Route path="/shipping" element={<ShippingScreen />} exact />
             <Route path="/payment" element={<Payment />} exact />
             <Route path="/placeorder" element={<PlaceOrderScreen />} exact />
+            <Route path="/order/:id?" element={<OrderScreen />} exact />
             {/* Admin users */}
             <Route path="" element={<AdminRoute />}>
-              <Route path="/admin/orderlist" element={<OrderListScreen/>} />
+              <Route path="/admin/orderlist" element={<OrderListScreen />} />
               <Route
                 path="/admin/productlist"
                 element={<ProductListScreen />}
@@ -67,7 +69,7 @@ function App() {
                 path="/admin/product/create"
                 element={<CreateProductScreen />}
               />
-              <Route path="/admin/user/:id/edit" element={<UserEditScreen />} />
+              {/* <Route path="/admin/user/:id/edit" element={<UserEditScreen />} /> */}
             </Route>
           </Routes>
         </Container>

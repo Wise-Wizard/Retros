@@ -18,8 +18,14 @@ const orderSchema = mongoose.Schema(
           required: true,
         },
         image: {
-          type: String,
-          required: true,
+          public_id: {
+            type: String,
+            required: false,
+          },
+          url: {
+            type: String,
+            required: false,
+          },
         },
         price: {
           type: Number,
@@ -33,6 +39,10 @@ const orderSchema = mongoose.Schema(
       },
     ],
     shippingAddress: {
+      phone: {
+        type: Number,
+        required: true,
+      },
       address: {
         type: String,
         required: true,

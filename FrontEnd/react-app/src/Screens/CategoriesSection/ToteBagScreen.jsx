@@ -20,15 +20,18 @@ function ToteBagScreen() {
       ) : error ? (
         <Error variant="danger" children={error} />
       ) : (
-        <Row>
-          {products
-            .filter((product) => product.category === "Tote Bag")
-            .map((product) => (
-              <Col key={product._id} md={3}>
-                <ProductCard productDetails={product} />
-              </Col>
-            ))}
-        </Row>
+        <>
+          <h1 className="welcome-heading">Tote Bags</h1>
+          <Row>
+            {products
+              .filter((product) => product.category === "Tote Bag")
+              .map((product) => (
+                <Col key={product._id} md={3}>
+                  <ProductCard productDetails={product} />
+                </Col>
+              ))}
+          </Row>
+        </>
       )}
     </>
   );

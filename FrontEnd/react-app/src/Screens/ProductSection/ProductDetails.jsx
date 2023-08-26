@@ -8,6 +8,7 @@ import {
   Form,
 } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
+import "./ProductDetails.css";
 
 import Rating from "../../Components/Rating";
 import { useDispatch, useSelector } from "react-redux";
@@ -65,22 +66,21 @@ function ProductPage() {
               <Image src={product.image.url} alt={product.name} fluid />
             )}
           </Col>
-          <Col md={3}>
-            <ListGroup>
-              <ListGroupItem variant="primary">
-                <h2>{product.name}</h2>
+          <Col md={3} className="product-details-col">
+            <ListGroup className="product-details-list">
+              <ListGroupItem className="product-details-item dark-bg">
+                <h2 className="product-name">{product.name}</h2>
               </ListGroupItem>
-              <ListGroupItem>
-                <Rating value={product.rating}></Rating>
-                <h5>{product.numReviews} reviews</h5>
+              <ListGroupItem className="product-details-item light-bg">
+                <h5 className="product-price">Price: {product.price} INR</h5>
               </ListGroupItem>
-              <ListGroupItem variant="primary">
-                <h5>Price: {product.price}$</h5>
+              <ListGroupItem className="product-details-item dark-bg">
+                <p className="product-description">{product.description}</p>
               </ListGroupItem>
-              <ListGroupItem>{product.description}</ListGroupItem>
             </ListGroup>
           </Col>
-          <Col md={3}>
+
+          <Col md={3} style={{marginTop: "20px"}}>
             <ListGroup>
               <ListGroupItem>
                 <Row>

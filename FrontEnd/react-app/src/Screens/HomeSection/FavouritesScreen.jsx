@@ -33,8 +33,6 @@ function FavouritesScreen() {
     return userFav.favourites.includes(product._id);
   });
 
-  console.log(favouriteProducts);
-
   if (favouriteProducts.length === 0) {
     return (
       <>
@@ -49,6 +47,7 @@ function FavouritesScreen() {
 
   return (
     <>
+      <h1 className="welcome-heading">Your Picks</h1>
       <Row>
         {favouriteProducts.map((product) => (
           <Col key={product._id} md={3}>
