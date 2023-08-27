@@ -26,8 +26,7 @@ function Payment() {
       <h1>Payment Method</h1>
       <Alert
         variant="info"
-        className="payment-message"
-        style={{ width: "800px" }}
+        className="custom-payment-message"
       >
         <h5>Payment Update:</h5>
         <p>
@@ -80,7 +79,7 @@ function Payment() {
               }}
               disabled={true}
             ></Form.Check>
-            &nbsp; Cash On Delivery
+            &nbsp; COD Order
           </Form.Label>
         </Form.Group>
         <Button

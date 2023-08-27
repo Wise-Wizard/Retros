@@ -87,3 +87,16 @@
     transform: translateX(0%);
   }
 }
+
+.category_link {
+  vertical-align: baseline;
+  margin-left: 12px;
+  margin-top: 8px; /* Add some space between the heading and link in mobile */
+}
+
+@media screen and (max-width: 768px) {
+  .nav_Button {
+    padding: 5px 5px;
+    margin: 0px 5px;
+  }
+}

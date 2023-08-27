@@ -7,7 +7,6 @@ import {
   Row,
   Col,
   Form,
-  Button,
   Card,
   Image,
   ListGroup,
@@ -55,20 +54,25 @@ function Cart() {
           ) : (
             <ListGroup variant="flush">
               {cartItems.map((item) => (
-                <ListGroupItem>
-                  <Row>
-                    <Col md={2}>
-                      <Image src={item.image.url} alt={item.name} fluid rounded />
+                <ListGroupItem className="cart-item">
+                  <Row className="align-items-center">
+                    <Col xs={6} md={2}>
+                      <Image
+                        src={item.image.url}
+                        alt={item.name}
+                        fluid
+                        rounded
+                      />
                     </Col>
-                    <Col md={3}>
+                    <Col xs={6} md={3}>
                       <Link to={`/product/${item.product}`}>
                         <h4>{item.name}</h4>
                       </Link>
                     </Col>
-                    <Col md={2}>
+                    <Col xs={12} md={2}>
                       <h4>{item.price} INR</h4>
                     </Col>
-                    <Col md={2}>
+                    <Col xs={6} md={2}>
                       <Form.Control
                         as="select"
                         value={item.qty}
@@ -86,18 +90,12 @@ function Cart() {
                         ))}
                       </Form.Control>
                     </Col>
-                    <Col>
-                      <Button
-                        type="button"
-                        variant="light"
+                    <Col xs={6} md={3}>
+                      <DeleteIcon
+                        fontSize="large"
+                        style={{ color: "#8B0000" }}
                         onClick={() => removeFromCartHandler(item.product)}
-                        className="delete"
-                      >
-                        <DeleteIcon
-                          fontSize="large"
-                          style={{ color: "#8B0000" }}
-                        />
-                      </Button>
+                      />
                     </Col>
                   </Row>
                 </ListGroupItem>
@@ -107,7 +105,7 @@ function Cart() {
         </Col>
 
         <Col md={4}>
-          <Card style={{ width: "450px" }}>
+          <Card className="custom-card">
             <ListGroup variant="flush">
               <ListGroupItem>
                 <h3>

@@ -1,25 +1,16 @@
-import Carousel from "react-bootstrap/Carousel";
-import ProductCard from "../../Screens/ProductSection/ProductScreen";
+import React from 'react';
+import Carousel from 'react-bootstrap/Carousel';
+import ProductCard from '../../Screens/ProductSection/ProductScreen';
 
 const MultiGridCarousel = ({ products }) => {
-  const chunkSize = 4; // Number of products to display per slide
-
-  // Split products into chunks of size 'chunkSize'
-  const productChunks = [];
-  for (let i = 0; i < products.length; i += chunkSize) {
-    productChunks.push(products.slice(i, i + chunkSize));
-  }
-
   return (
-    <Carousel interval={null}>
-      {productChunks.map((chunk, index) => (
+    <Carousel interval={null} indicators={false} touch>
+      {products.map((product, index) => (
         <Carousel.Item key={index}>
-          <div className="row" style={{ backgroundColor: "#FEFBF6" }}>
-            {chunk.map((product, idx) => (
-              <div className="col-md-3" key={idx}>
-                <ProductCard productDetails={product} />
-              </div>
-            ))}
+          <div className="row" style={{ backgroundColor: '#FEFBF6' }}>
+            <div className="col-md-3">
+              <ProductCard productDetails={product} />
+            </div>
           </div>
         </Carousel.Item>
       ))}

@@ -5,6 +5,7 @@ import { createOrder } from "../../Actions/orderAction";
 import { useDispatch, useSelector } from "react-redux";
 import Error from "../../Components/Error";
 import { useNavigate } from "react-router-dom";
+import "./OrderCard.css";
 
 const PlaceOrderScreen = () => {
   const cart = useSelector((state) => state.cart);
@@ -103,7 +104,7 @@ const PlaceOrderScreen = () => {
           </ListGroup>
         </Col>
         <Col md={4}>
-          <Card style={{ width: "450px" }}>
+          <Card className="custom-card">
             <ListGroup variant="flush">
               <ListGroup.Item>
                 <h2>Order Summary</h2>

@@ -6,6 +6,7 @@ import { getOrderDetails, payOrder } from "../../Actions/orderAction";
 import { useDispatch, useSelector } from "react-redux";
 import Error from "../../Components/Error";
 import Loader from "../../Components/LoaderComponent/Loader";
+import "./OrderCard.css";
 
 const OrderScreen = ({ match }) => {
   const { id } = useParams();
@@ -110,7 +111,7 @@ const OrderScreen = ({ match }) => {
           </ListGroup.Item>
         </Col>
         <Col md={4}>
-          <Card style={{ padding: "30px", width: "450px" }}>
+          <Card className="custom-card">
             <ListGroup variant="flush">
               <ListGroup.Item>
                 <h2>Order Summary</h2>
