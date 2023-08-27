@@ -10,11 +10,14 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import MultiGridCarousel from "../../Components/HomeComponents/Caraousel";
 import ImageScrollAnimation from "../../Components/HomeComponents/ImageComponent";
 import { useNavigate } from "react-router-dom";
+import DesktopCarousel from "../../Components/HomeComponents/DesktopCaraosel";
+import { useMediaQuery } from "react-responsive";
 
 function Home() {
   const dispatch = useDispatch();
   const allProducts = useSelector((state) => state.productList);
   const { loading, error, products } = allProducts;
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   const Navigate = useNavigate();
   useEffect(() => {
     dispatch(productListAction());
@@ -51,9 +54,9 @@ function Home() {
             }
           />
           <div className="bag_Section">
-            <h2 style={{ display: "flex", alignItems: "baseline" }}>
+            <h2 className="welcome-heading">
               Tote Bags
-              <h5 style={{ marginLeft: "12px", verticalAlign: "baseline" }}>
+              <h5 className={styles.category_link}>
                 <a href="/product/totebags">See All Collection</a>
                 <ArrowForwardIcon
                   fontSize="small"
@@ -61,12 +64,19 @@ function Home() {
                 />
               </h5>
             </h2>
-
-            <MultiGridCarousel
-              products={products.filter(
-                (product) => product.category === "Tote Bag"
-              )}
-            />
+            {isMobile ? (
+              <MultiGridCarousel
+                products={products.filter(
+                  (product) => product.category === "Tote Bag"
+                )}
+              />
+            ) : (
+              <DesktopCarousel
+                products={products.filter(
+                  (product) => product.category === "Tote Bag"
+                )}
+              />
+            )}
           </div>
           <ImageScrollAnimation
             imageUrl={
@@ -74,9 +84,9 @@ function Home() {
             }
           />
           <div className="bracelet_Section">
-            <h2 style={{ display: "flex", alignItems: "baseline" }}>
+            <h2 className="welcome-heading">
               Bracelets
-              <h5 style={{ marginLeft: "12px", verticalAlign: "baseline" }}>
+              <h5 className={styles.category_link}>
                 <a href="/product/bracelets">See All Collection</a>
                 <ArrowForwardIcon
                   fontSize="small"
@@ -84,11 +94,19 @@ function Home() {
                 />
               </h5>
             </h2>
-            <MultiGridCarousel
-              products={products.filter(
-                (product) => product.category === "Bracelet"
-              )}
-            />
+            {isMobile ? (
+              <MultiGridCarousel
+                products={products.filter(
+                  (product) => product.category === "Bracelet"
+                )}
+              />
+            ) : (
+              <DesktopCarousel
+                products={products.filter(
+                  (product) => product.category === "Bracelet"
+                )}
+              />
+            )}
           </div>
         </div>
       )}

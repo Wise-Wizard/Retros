@@ -7,6 +7,8 @@ import Error from "../../Components/Error";
 import { Row, Col } from "react-bootstrap";
 import ProductCard from "../ProductSection/ProductScreen";
 import { Link } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
+import MultiGridCarousel from "../../Components/HomeComponents/Caraousel";
 
 function FavouritesScreen() {
   const dispatch = useDispatch();
@@ -16,18 +18,20 @@ function FavouritesScreen() {
   const { loading, error, userFav } = favProducts;
 
   useEffect(() => {
-    console.log("Dispatched");
     dispatch(getFavourites());
     dispatch(productListAction());
     window.scrollTo(0, 0);
   }, [dispatch]);
 
+  // Use the useMediaQuery hook to get the screen width
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+
   if (loading) {
-    return <Loader />; // Display Loader while loading
+    return <Loader />;
   }
 
   if (error || !userFav || !products) {
-    return <Error variant="danger" children={error} />; // Display Error component if there is an error or if data is not available
+    return <Error variant="danger" children={error} />;
   }
 
   const favouriteProducts = products.filter((product) => {
@@ -40,8 +44,7 @@ function FavouritesScreen() {
         <h1>You have no favourites!</h1>
         <Link to="/">
           <h2>Go Back</h2>
-        </Link>{" "}
-        {/* Add a link to go back */}
+        </Link>
       </>
     );
   }
@@ -49,13 +52,22 @@ function FavouritesScreen() {
   return (
     <>
       <h1 className="welcome-heading">Your Picks</h1>
-      <Row>
-        {favouriteProducts.map((product) => (
-          <Col key={product._id} md={3}>
-            <ProductCard productDetails={product} />
+      {isMobile ? (
+        <Row>
+          <Col md={12}>
+            {/* Render the carousel for mobile view */}
+            <MultiGridCarousel products={favouriteProducts} />
           </Col>
-        ))}
-      </Row>
+        </Row>
+      ) : (
+        <Row>
+          {favouriteProducts.map((product) => (
+            <Col key={product._id} md={3}>
+              <ProductCard productDetails={product} />
+            </Col>
+          ))}
+        </Row>
+      )}
     </>
   );
 }
