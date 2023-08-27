@@ -10,7 +10,7 @@ import {
 import { Link, useParams } from "react-router-dom";
 import "./ProductDetails.css";
 
-import Rating from "../../Components/Rating";
+// import Rating from "../../Components/Rating";
 import { useDispatch, useSelector } from "react-redux";
 import productDetailsAction from "../../Actions/productDetailsAction";
 import Loader from "../../Components/LoaderComponent/Loader";
@@ -35,6 +35,7 @@ function ProductPage() {
   useEffect(() => {
     dispatch(productDetailsAction(id));
     dispatch(getFavourites());
+    window.scrollTo(0, 0);
   }, [dispatch, id]);
 
   useEffect(() => {
@@ -68,13 +69,13 @@ function ProductPage() {
           </Col>
           <Col md={3} className="product-details-col">
             <ListGroup className="product-details-list">
-              <ListGroupItem className="product-details-item dark-bg">
+              <ListGroupItem className="product-details-item custom-dark-bg">
                 <h2 className="product-name">{product.name}</h2>
               </ListGroupItem>
-              <ListGroupItem className="product-details-item light-bg">
+              <ListGroupItem className="product-details-item custom-light-bg">
                 <h5 className="product-price">Price: {product.price} INR</h5>
               </ListGroupItem>
-              <ListGroupItem className="product-details-item dark-bg">
+              <ListGroupItem className="product-details-item custom-dark-bg">
                 <p className="product-description">{product.description}</p>
               </ListGroupItem>
             </ListGroup>

@@ -19,6 +19,7 @@ function FavouritesScreen() {
     console.log("Dispatched");
     dispatch(getFavourites());
     dispatch(productListAction());
+    window.scrollTo(0, 0);
   }, [dispatch]);
 
   if (loading) {

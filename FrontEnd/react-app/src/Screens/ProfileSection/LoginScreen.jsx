@@ -22,6 +22,7 @@ function LoginScreen() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (userInfo) {
       Navigate(redirect);
     }

@@ -13,14 +13,16 @@
   margin-bottom: 15px;
 }
 
-.dark-bg {
-  background-color: #333; /* Dark background */
-  color: #fff; /* White text color */
+/* Dark background with white text color */
+.product-details-item.custom-dark-bg {
+  background-color: #333;
+  color: #fff;
 }
 
-.light-bg {
-  background-color: #f0f0f0; /* Light gray background */
-  color: #333; /* Dark text color */
+/* Light gray background with dark text color */
+.product-details-item.custom-light-bg {
+  background-color: #f0f0f0;
+  color: #333;
 }
 
 .product-name {
