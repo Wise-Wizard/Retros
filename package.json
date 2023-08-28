@@ -1,5 +1,5 @@
 {
-  "name": "swiftmart",
+  "name": "retros",
   "version": "1.0.0",
   "description": "ECOM Website",
   "main": "index.js",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Wise-Wizard/SwiftMart.git"
+    "url": "git+https://github.com/Wise-Wizard/Retros.git"
   },
   "author": "Saransh SHankar",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Wise-Wizard/SwiftMart/issues"
+    "url": "https://github.com/Wise-Wizard/Retros/issues"
   },
-  "homepage": "https://github.com/Wise-Wizard/SwiftMart#readme",
+  "homepage": "https://github.com/Wise-Wizard/Retros#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
